@@ -19,7 +19,7 @@ class MyMap extends Component {
 
   onMapClick(e) {
     this.setState({ showModal: true, clickLatLng: e.latlng })
-    this.props.onMapClick()
+    this.props.showCreateReport()
   }
 
   render() {
@@ -44,8 +44,6 @@ class MyMap extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return state.modal
-}
+const mapStateToProps = state => (state.modal)
 
-export default connect(mapStateToProps, showCreateReport)(MyMap)
+export default connect(mapStateToProps, { showCreateReport })(MyMap)

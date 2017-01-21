@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import MyMap from './components/Map'
 import { showCreateReport } from './actions'
@@ -6,22 +6,23 @@ import ModalConductor from './components/common/modal/ModalConductor'
 import './App.css'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.onMapClick = this.onMapClick.bind(this)
-  }
-
-  onMapClick() {
-    this.props.showCreateReport()
-  }
   render() {
     return (
       <div className="App">
-        <MyMap onMapClick={this.onMapClick} />
+        <MyMap />
         <ModalConductor currentModal={this.props.modal} />
       </div>
     )
   }
+}
+
+App.defaultProps = {
+  modal: null
+}
+
+App.propTypes = {
+  modal: PropTypes.string,
+  showCreateReport: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => (state.modal)
