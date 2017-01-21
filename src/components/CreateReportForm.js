@@ -9,9 +9,7 @@ const CreateReportForm = (props) => {
   }
 
   return (
-    <Modal hideModal={hideModal}>
-      Hi
-    </Modal>
+    <Modal hideModal={hideModal} title="Create a Report" />
   )
 }
 
