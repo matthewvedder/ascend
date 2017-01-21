@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 
 const styles = {
   overlay: {
@@ -32,8 +32,7 @@ const styles = {
   }
 }
 
-const ModalWrapper = (props) => {
-  const { title, children, hideModal } = props
+const ModalWrapper = ({ title, children, hideModal }) => {
 
   const handleBackgroundClick = (e) => {
     if (e.target === e.currentTarget) hideModal()
@@ -57,6 +56,6 @@ ModalWrapper.defaultProps = {
 
 ModalWrapper.propTypes = {
   title: PropTypes.string,
-  hideModal: PropTypes.func.isRequired,
+  hideModal: PropTypes.func.isRequired
 }
 export default ModalWrapper

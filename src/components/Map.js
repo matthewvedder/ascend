@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
 import { showCreateReport } from '../actions'
@@ -13,17 +13,14 @@ const styles = {
 class MyMap extends Component {
   constructor(props) {
     super(props)
-    this.state = { showModal: false, clickLatLng: {} }
     this.onMapClick = this.onMapClick.bind(this)
   }
 
   onMapClick(e) {
-    this.setState({ showModal: true, clickLatLng: e.latlng })
-    this.props.showCreateReport()
+    this.props.showCreateReport(e.latlng)
   }
 
   render() {
-    const { showModal, clickLatLng } = this.state
     const accessToken = 'pk.eyJ1IjoidmVkZHN0ZXIiLCJhIjoiY2lyNzdlanUzMDBza2djbTM1Z2hlYTdnNSJ9.FpydM0KRrrunXzaHJYCmrA'
 
     return (
@@ -42,6 +39,10 @@ class MyMap extends Component {
       </div>
     )
   }
+}
+
+MyMap.propTypes = {
+  showCreateReport: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => (state.modal)
