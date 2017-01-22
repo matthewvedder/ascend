@@ -33,9 +33,8 @@ const styles = {
 }
 
 const ModalWrapper = ({ title, children, hideModal }) => {
-
-  const handleBackgroundClick = (e) => {
-    if (e.target === e.currentTarget) hideModal()
+  const handleBackgroundClick = (event) => {
+    if (event.target === event.currentTarget) hideModal()
   }
 
   return (
