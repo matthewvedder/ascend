@@ -14,7 +14,7 @@ const styles = {
 
 const { containerStyle, labelStyle } = styles
 
-const Input = ({ type, id, placeholder, defaultValue, label, style }) => (
+const Input = ({ type, id, placeholder, label, value, onChange }) => (
   <div style={containerStyle}>
     <label style={labelStyle} htmlFor={id}>{ label }</label>
     <input
@@ -22,7 +22,8 @@ const Input = ({ type, id, placeholder, defaultValue, label, style }) => (
       type={type}
       id={id}
       placeholder={placeholder}
-      defaultValue={defaultValue}
+      value={value}
+      onChange={onChange}
     />
   </div>
 )
@@ -31,15 +32,17 @@ Input.defaultProps = {
   type: '',
   id: '',
   placeholder: '',
-  defaultValue: '',
-  label: ''
+  label: '',
+  value: ''
 }
 
 Input.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string,
   placeholder: PropTypes.string,
-  label: PropTypes.string
+  label: PropTypes.string,
+  value: PropTypes.any,
+  onChange: PropTypes.func.isRequired
 }
 
 export default Input

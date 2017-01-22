@@ -4,8 +4,8 @@ import { hideModal } from '../actions'
 import Modal from './common/modal/ModalWrapper'
 import ReportForm from './ReportForm'
 
-const CreateReportForm = ({ hideModal }) => (
-  <Modal hideModal={hideModal} title="Create a Report" >
+const CreateReportForm = props => (
+  <Modal hideModal={props.hideModal} title="Create a Report" >
     <ReportForm />
   </Modal>
 )
