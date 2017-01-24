@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
-import { showCreateReport } from '../actions'
+import { showCreateReport, inputUpdate } from '../actions'
+
 
 const position = [44.2706, -71.3033]
 const styles = {
@@ -16,8 +17,13 @@ class MyMap extends Component {
     this.onMapClick = this.onMapClick.bind(this)
   }
 
-  onMapClick(e) {
-    this.props.showCreateReport(e.latlng)
+  onMapClick(event) {
+    const { latlng } = event
+    const { showCreateReport, inputUpdate } = this.props
+
+    showCreateReport(latlng)
+    inputUpdate('lat', latlng.lat)
+    inputUpdate('lng', latlng.lng)
   }
 
   render() {
@@ -42,9 +48,10 @@ class MyMap extends Component {
 }
 
 MyMap.propTypes = {
-  showCreateReport: PropTypes.func.isRequired
+  showCreateReport: PropTypes.func.isRequired,
+  inputUpdate: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => (state.modal)
 
-export default connect(mapStateToProps, { showCreateReport })(MyMap)
+export default connect(mapStateToProps, { showCreateReport, inputUpdate })(MyMap)

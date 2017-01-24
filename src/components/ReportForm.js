@@ -37,14 +37,14 @@ const ReportForm = ({ clickedLatlng, title, lat, lng, description, inputUpdate }
       label="Latitude"
       value={lat}
       defaultValue={clickedLatlng.lat}
-      onChange={event => inputUpdate('lat', event.target.value)}
+      onChange={event => inputUpdate('lat', Number(event.target.value))}
     />
     <Input
       type="text"
       id="lng"
       label="Longitude"
       value={lng}
-      onChange={event => inputUpdate('lng', event.target.value)}
+      onChange={event => inputUpdate('lng', Number(event.target.value))}
     />
     <label style={styles.labelStyle} htmlFor="description">Write your report here!</label>
     <textarea
@@ -60,8 +60,8 @@ const ReportForm = ({ clickedLatlng, title, lat, lng, description, inputUpdate }
 ReportForm.propTypes = {
   clickedLatlng: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  lat: PropTypes.string.isRequired,
-  lng: PropTypes.string.isRequired,
+  lat: PropTypes.number.isRequired,
+  lng: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   inputUpdate: PropTypes.func.isRequired,
 }
