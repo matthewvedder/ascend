@@ -7,8 +7,7 @@ const styles = {
     paddingTop: '5%'
   },
   labelStyle: {
-    alignSelf: 'flex-start',
-    paddingBottom: '2%'
+    alignSelf: 'flex-start'
   }
 }
 
@@ -18,7 +17,7 @@ const Input = ({ type, id, placeholder, label, value, onChange }) => (
   <div style={containerStyle}>
     <label style={labelStyle} htmlFor={id}>{ label }</label>
     <input
-      style={styles}
+      style={styles.inputStyle}
       type={type}
       id={id}
       placeholder={placeholder}

@@ -21,7 +21,7 @@ const styles = {
   }
 }
 
-const ReportForm = ({ clickedLatlng, title, lat, lng, description, inputUpdate }) => (
+const ReportForm = ({ title, lat, lng, description, inputUpdate }) => (
   <div style={styles.container}>
     <Input
       type="text"
@@ -36,7 +36,6 @@ const ReportForm = ({ clickedLatlng, title, lat, lng, description, inputUpdate }
       id="lat"
       label="Latitude"
       value={lat}
-      defaultValue={clickedLatlng.lat}
       onChange={event => inputUpdate('lat', Number(event.target.value))}
     />
     <Input
@@ -68,9 +67,8 @@ ReportForm.propTypes = {
 
 const mapStateToProps = (state) => {
   const { title, lat, lng, description } = state.input
-  const { clickedLatlng } = state.modal
 
-  return { clickedLatlng, title, lat, lng, description }
+  return { title, lat, lng, description }
 }
 
 export default connect(mapStateToProps, { inputUpdate })(ReportForm)
