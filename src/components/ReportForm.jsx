@@ -57,7 +57,6 @@ const ReportForm = ({ title, lat, lng, description, inputUpdate }) => (
 )
 
 ReportForm.propTypes = {
-  clickedLatlng: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   lat: PropTypes.number.isRequired,
   lng: PropTypes.number.isRequired,
