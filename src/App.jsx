@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import MyMap from './components/Map'
 import ModalConductor from './components/common/modal/ModalConductor'
 import './App.css'
+import { helloSaga } from './sagas'
 
 class App extends Component {
   render() {
