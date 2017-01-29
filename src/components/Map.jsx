@@ -7,7 +7,7 @@ import { showCreateReport, inputUpdate } from '../actions'
 const position = [44.2706, -71.3033]
 const styles = {
   mapStyle: {
-    height: window.screen.height,
+    height: '100vh',
   },
 }
 

@@ -10,14 +10,19 @@ const styles = {
   backgroundColor: 'lavender'
 }
 
-const Button = ({ onClick, children }) => (
-  <button style={styles} onClick={onClick}>
+const Button = ({ onClick, stylesFromProp, children }) => (
+  <button style={{ ...styles, ...stylesFromProp }} onClick={onClick}>
     { children }
   </button>
 )
 
+Button.defaultProps = {
+  stylesFromProp: {}
+}
+
 Button.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  stylesFromProp: PropTypes.object
 }
 
 export default Button
