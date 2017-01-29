@@ -1,4 +1,4 @@
-import { SHOW_CREATE_REPORT, HIDE_MODAL } from '../actions/types'
+import { SHOW_CREATE_REPORT, HIDE_MODAL, SHOW_AUTH_FORM } from '../actions/types'
 
 const INITIAL_STATE = {
   modal: null,
@@ -10,8 +10,13 @@ export default (state = INITIAL_STATE, action) => {
     case SHOW_CREATE_REPORT:
       return {
         ...state,
-        modal: 'CREATE_REPORT_FORM',
+        modal: SHOW_CREATE_REPORT,
         clickedLatlng: action.payload
+      }
+    case SHOW_AUTH_FORM:
+      return {
+        ...state,
+        modal: SHOW_AUTH_FORM
       }
     case HIDE_MODAL:
       return { ...state, modal: 'HIDE_MODAL' }

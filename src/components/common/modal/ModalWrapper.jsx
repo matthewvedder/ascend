@@ -61,4 +61,5 @@ ModalWrapper.propTypes = {
   title: PropTypes.string,
   hideModal: PropTypes.func.isRequired
 }
+
 export default ModalWrapper

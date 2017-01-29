@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import firebase from 'firebase'
 import { connect } from 'react-redux'
-import MyMap from './components/Map'
-import ModalConductor from './components/common/modal/ModalConductor'
-import Button from './components/common/Button'
-import './App.css'
+import { showAuthForm } from '../actions'
+import MyMap from './Map'
+import ModalConductor from './common/modal/ModalConductor'
+import Button from './common/Button'
+import '../App.css'
 
 const buttonStyle = {
   position: 'absolute',
@@ -31,7 +32,7 @@ class App extends Component {
         <Button
           className="leaflet-top leaflet-right"
           stylesFromProp={buttonStyle}
-          onClick={() => console.log('hiee')}
+          onClick={this.props.showAuthForm}
         >
           SIGN IN
         </Button>
@@ -52,4 +53,4 @@ App.propTypes = {
 
 const mapStateToProps = state => (state.modal)
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, { showAuthForm })(App)
