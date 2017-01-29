@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import CreateReportForm from '../../CreateReportForm'
 
@@ -9,6 +9,14 @@ const ModalConductor = (props) => {
     default:
       return null
   }
+}
+
+ModalConductor.defaultProps = {
+  modal: null
+}
+
+ModalConductor.propTypes = {
+  modal: PropTypes.string
 }
 
 const mapStateToProps = (state) => {
