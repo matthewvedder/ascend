@@ -7,7 +7,9 @@ const styles = {
     paddingTop: '5%'
   },
   labelStyle: {
-    alignSelf: 'flex-start'
+    alignSelf: 'flex-start',
+    fontFamily: 'Arial, Helvetica, sans-serif',
+    fontSize: '1em'
   }
 }
 

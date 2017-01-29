@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Input from './common/Input'
+import Button from './common/Button'
 import { inputUpdate } from '../actions'
 
 const styles = {
@@ -53,6 +54,11 @@ const ReportForm = ({ title, lat, lng, description, inputUpdate }) => (
       value={description}
       onChange={event => inputUpdate('description', event.target.value)}
     />
+    <Button
+      onClick={() => console.log('hello!')}
+    >
+      Create
+    </Button>
   </div>
 )
 

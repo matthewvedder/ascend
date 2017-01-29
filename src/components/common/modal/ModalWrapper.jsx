@@ -23,6 +23,10 @@ const styles = {
     outline: 'none',
     padding: '20px'
   },
+  title: {
+    color: '#33334d',
+    fontFamily: 'Arial Black, Gadget, sans-serif'
+  },
   close: {
     position: 'absolute',
     top: '7px',
@@ -40,7 +44,7 @@ const ModalWrapper = ({ title, children, hideModal }) => {
   return (
     <div onClick={handleBackgroundClick} style={styles.overlay}>
       <div style={styles.content}>
-        <h2>{title}</h2>
+        <h2 style={styles.title}>{title}</h2>
         <span style={styles.close} onClick={hideModal}>x</span>
         { children }
       </div>
