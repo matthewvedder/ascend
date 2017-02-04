@@ -1,7 +1,7 @@
-import * as FirebaseSagas from './FirebaseSagas'
+import * as AuthSagas from './AuthSagas'
 
 export default function* rootSaga() {
   yield [
-    FirebaseSagas.helloSaga()
+    AuthSagas.watchAuth()
   ]
 }

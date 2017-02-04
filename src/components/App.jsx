@@ -15,12 +15,13 @@ const buttonStyle = {
 
 class App extends Component {
   componentWillMount() {
+    // Initialize Firebase
     const config = {
-      apiKey: 'AIzaSyAE1QvZHy4Se9FD4cEb1UCVIhkZtAcbmVY',
-      authDomain: 'adventuremind-bf53e.firebaseapp.com',
-      databaseURL: 'https://adventuremind-bf53e.firebaseio.com',
-      storageBucket: 'adventuremind-bf53e.appspot.com',
-      messagingSenderId: '1029961770829'
+      apiKey: 'AIzaSyCz3-OZrCdr7VZ-6kNXEpVyhkXLuc-tnMU',
+      authDomain: 'ascend-3bfa6.firebaseapp.com',
+      databaseURL: 'https://ascend-3bfa6.firebaseio.com',
+      storageBucket: 'ascend-3bfa6.appspot.com',
+      messagingSenderId: '1094367548774'
     }
 
     firebase.initializeApp(config)
@@ -34,7 +35,7 @@ class App extends Component {
           stylesFromProp={buttonStyle}
           onClick={this.props.showAuthForm}
         >
-          SIGN IN
+          Sign In | Up
         </Button>
         <MyMap />
         <ModalConductor currentModal={this.props.modal} />
