@@ -28,6 +28,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.auth)
     return (
       <div className="App">
         <Button
@@ -49,9 +50,13 @@ App.defaultProps = {
 }
 
 App.propTypes = {
-  modal: PropTypes.string
+  modal: PropTypes.any
 }
 
-const mapStateToProps = state => (state.modal)
+const mapStateToProps = (state) => {
+  const { modal, auth } = state
+
+  return { modal, auth }
+}
 
 export default connect(mapStateToProps, { showAuthForm })(App)
