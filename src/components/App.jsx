@@ -49,7 +49,8 @@ App.defaultProps = {
 }
 
 App.propTypes = {
-  modal: PropTypes.any
+  modal: PropTypes.any,
+  showAuthForm: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {
