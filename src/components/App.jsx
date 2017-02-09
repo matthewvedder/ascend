@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import firebase from 'firebase'
 import { connect } from 'react-redux'
-import { showAuthForm } from '../actions'
+import { showAuthForm, setCurrentUser } from '../actions'
 import MyMap from './Map'
 import ModalConductor from './common/modal/ModalConductor'
 import Button from './common/Button'
@@ -25,9 +25,11 @@ class App extends Component {
     }
 
     firebase.initializeApp(config)
+    firebase.auth().onAuthStateChanged((user) => { if (user) this.props.setCurrentUser(user) })
   }
 
   render() {
+    // console.log(this.props.auth)
     return (
       <div className="App">
         <Button
@@ -50,7 +52,8 @@ App.defaultProps = {
 
 App.propTypes = {
   modal: PropTypes.any,
-  showAuthForm: PropTypes.func.isRequired
+  showAuthForm: PropTypes.func.isRequired,
+  setCurrentUser: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {
@@ -59,4 +62,4 @@ const mapStateToProps = (state) => {
   return { modal, auth }
 }
 
-export default connect(mapStateToProps, { showAuthForm })(App)
+export default connect(mapStateToProps, { showAuthForm, setCurrentUser })(App)

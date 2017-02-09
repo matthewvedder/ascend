@@ -1,16 +1,14 @@
-import { HANDLE_AUTH_DATA } from '../actions/types'
+import { SET_CURRENT_USER } from '../actions/types'
 
 const INITIAL_STATE = {
-  user: {},
-  token: '',
-  provider: ''
+  user: null
 }
 
 export default (state = INITIAL_STATE, action) => {
-  const { user, token, provider } = action
+  const { user } = action
   switch (action.type) {
-    case HANDLE_AUTH_DATA:
-      return { ...state, user, token, provider }
+    case SET_CURRENT_USER:
+      return { ...state, user }
     default:
       return state
   }
