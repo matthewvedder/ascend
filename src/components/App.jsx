@@ -4,14 +4,8 @@ import { connect } from 'react-redux'
 import { showAuthForm, setCurrentUser } from '../actions'
 import MyMap from './Map'
 import ModalConductor from './common/modal/ModalConductor'
-import Button from './common/Button'
+import AuthButton from './AuthButton'
 import '../App.css'
-
-const buttonStyle = {
-  position: 'absolute',
-  zIndex: 1000,
-  pointerEvents: 'auto'
-}
 
 class App extends Component {
   componentWillMount() {
@@ -32,13 +26,11 @@ class App extends Component {
     // console.log(this.props.auth)
     return (
       <div className="App">
-        <Button
-          className="leaflet-top leaflet-right"
-          stylesFromProp={buttonStyle}
+        <AuthButton
           onClick={this.props.showAuthForm}
         >
           Sign In | Up
-        </Button>
+        </AuthButton>
         <MyMap />
         <ModalConductor currentModal={this.props.modal} />
       </div>
