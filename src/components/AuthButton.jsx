@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Button from './common/Button'
 import { signOut } from '../actions'
@@ -10,7 +10,7 @@ const buttonStyle = {
 }
 
 const existingUser = (authButtonProps) => {
-  if (authButtonProps.auth.user) {
+  if (authButtonProps.user) {
     return { text: 'Sign Out', onClick: authButtonProps.signOut }
   }
   return { text: 'Sign In | Up', onClick: authButtonProps.onClick }
@@ -29,6 +29,6 @@ const AuthButton = (props) => {
   )
 }
 
-const mapStateToProps = state => ({ auth: state.auth })
+const mapStateToProps = state => ({ user: state.auth.user })
 
 export default connect(mapStateToProps, { signOut })(AuthButton)
