@@ -4,11 +4,17 @@ import { hideModal, googleAuth } from '../actions'
 import Modal from './common/modal/ModalWrapper'
 import Button from './common/Button'
 
-const AuthForm = props => (
-  <Modal hideModal={props.hideModal} title="Sign In | Up!" >
-    <Button onClick={props.googleAuth}>Sign In With Google</Button>
-  </Modal>
-)
+const AuthForm = props => {
+  const handleAuth = () => {
+    props.googleAuth()
+    props.hideModal()
+  }
+  return (
+    <Modal hideModal={props.hideModal} title="Sign In | Up!" >
+      <Button onClick={handleAuth}>Sign In With Google</Button>
+    </Modal>
+  )
+}
 
 AuthForm.propTypes = {
   hideModal: PropTypes.func.isRequired,
