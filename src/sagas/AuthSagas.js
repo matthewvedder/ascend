@@ -16,7 +16,6 @@ function* signOut() {
   yield firebase
     .auth()
     .signOut()
-    .then(() => console.log('signed out'))
     .catch(error => (console.warn(error)))
 }
 
