@@ -4,7 +4,7 @@ import { hideModal, googleAuth } from '../actions'
 import Modal from './common/modal/ModalWrapper'
 import Button from './common/Button'
 
-const AuthForm = props => {
+const AuthForm = (props) => {
   const handleAuth = () => {
     props.googleAuth()
     props.hideModal()
