@@ -22,7 +22,7 @@ const styles = {
   }
 }
 
-const ReportForm = ({ title, lat, lng, description, inputUpdate }) => (
+const ReportForm = ({ title, lat, lng, description, onSubmit, inputUpdate }) => (
   <div style={styles.container}>
     <Input
       type="text"
@@ -55,7 +55,7 @@ const ReportForm = ({ title, lat, lng, description, inputUpdate }) => (
       onChange={event => inputUpdate('description', event.target.value)}
     />
     <Button
-      onClick={() => console.log('hello!')}
+      onClick={onSubmit}
     >
       Create
     </Button>
@@ -68,6 +68,7 @@ ReportForm.propTypes = {
   lng: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   inputUpdate: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {

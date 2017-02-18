@@ -6,7 +6,7 @@ import ReportForm from './ReportForm'
 
 const CreateReportForm = props => (
   <Modal hideModal={props.hideModal} title="Create a Report" >
-    <ReportForm />
+    <ReportForm onSubmit={() => { console.log('hi') }} />
   </Modal>
 )
 
