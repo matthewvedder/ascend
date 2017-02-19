@@ -55,7 +55,7 @@ const ReportForm = ({ title, lat, lng, description, onSubmit, inputUpdate }) => 
       onChange={event => inputUpdate('description', event.target.value)}
     />
     <Button
-      onClick={onSubmit}
+      onClick={() => onSubmit({ title, lat, lng, description })}
     >
       Create
     </Button>
