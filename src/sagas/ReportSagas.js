@@ -6,8 +6,8 @@ function* createReport(action) {
   const state = yield select()
   const userID = state.auth.user.uid
   const reportID = userID + Date.now()
-  yield firebase.database().ref('/reports').set({ [reportID]: action.values })
-  yield firebase.database().ref(`users/${userID}/reports/`).set({ reportID })
+  yield firebase.database().ref('/reports').push(action.values)
+  yield firebase.database().ref(`users/${userID}/reports/`).push({ reportID })
 }
 
 export function* watchReports() {
