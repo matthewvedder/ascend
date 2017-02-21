@@ -11,7 +11,8 @@ const CreateReportForm = props => (
 )
 
 CreateReportForm.propTypes = {
-  hideModal: PropTypes.func.isRequired
+  hideModal: PropTypes.func.isRequired,
+  createReport: PropTypes.func.isRequired
 }
 
 export default connect(null, { hideModal, createReport })(CreateReportForm)
