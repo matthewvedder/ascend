@@ -5,9 +5,13 @@ import { CREATE_REPORT, HIDE_MODAL } from '../actions/types'
 function* createReport(action) {
   const state = yield select()
   const userID = state.auth.user.uid
-  const reportID = userID + Date.now()
-  yield firebase.database().ref('/reports').push(action.values)
-  yield firebase.database().ref(`users/${userID}/reports/`).push({ reportID })
+  const reportKey = firebase.database().ref().child('reports').push().key
+
+  const updates = {}
+  updates[`/reports/${reportKey}`] = action.values
+  updates[`users/${userID}/reports/${reportKey}`] = true
+
+  yield firebase.database().ref().update(updates)
   yield put({ type: HIDE_MODAL })
 }
 
