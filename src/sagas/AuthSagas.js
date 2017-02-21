@@ -1,15 +1,16 @@
 import firebase from 'firebase'
-import { takeLatest } from 'redux-saga/effects'
-import { GOOGLE_AUTH, SIGN_OUT } from '../actions/types'
+import { takeLatest, put } from 'redux-saga/effects'
+import { GOOGLE_AUTH, SIGN_OUT, HIDE_MODAL } from '../actions/types'
 
 function* googleAuth() {
   const provider = new firebase.auth.GoogleAuthProvider()
 
   yield firebase
     .auth()
-    .signInWithPopup(provider)
+    .signInWithRedirect(provider)
     .then(result => ({ token: result.credential.accessToken }))
     .catch(error => (console.warn(error)))
+  yield put({ type: HIDE_MODAL })
 }
 
 function* signOut() {
