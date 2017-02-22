@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
-import { showCreateReport, inputUpdate } from '../actions'
+import { showCreateReport, inputUpdate, fetchReports } from '../actions'
 
 
 const position = [44.2706, -71.3033]
@@ -15,6 +15,7 @@ class MyMap extends Component {
   constructor(props) {
     super(props)
     this.onMapClick = this.onMapClick.bind(this)
+    props.fetchReports()
   }
 
   onMapClick(event) {
@@ -56,4 +57,4 @@ MyMap.propTypes = {
 
 const mapStateToProps = state => (state.modal)
 
-export default connect(mapStateToProps, { showCreateReport, inputUpdate })(MyMap)
+export default connect(mapStateToProps, { showCreateReport, inputUpdate, fetchReports })(MyMap)
