@@ -1,6 +1,7 @@
 import firebase from 'firebase'
 import { takeLatest, select, put } from 'redux-saga/effects'
 import { CREATE_REPORT, FETCH_REPORTS, HIDE_MODAL } from '../actions/types'
+import { fetchReportsSuccess } from '../actions'
 
 function* createReport(action) {
   const state = yield select()
@@ -15,15 +16,15 @@ function* createReport(action) {
   yield put({ type: HIDE_MODAL })
 }
 
-function* fetchReports() {
-  const { currentUser } = firebase.auth()
-  firebase.database().ref('/reports')
-    .on('value', snapshot => {
-      console.log(snapshot.val())
-    })
-}
+// function* fetchReports() {
+//  yield firebase.database().ref('/reports')
+//    .on('value', (snapshot) => {
+//       console.log((reports))
+//      fetchReportsSuccess()
+//    })
+// }
 
 export function* watchReports() {
   yield takeLatest(CREATE_REPORT, createReport)
-  yield takeLatest(FETCH_REPORTS, fetchReports)
+  // yield takeLatest(FETCH_REPORTS, fetchReports)
 }

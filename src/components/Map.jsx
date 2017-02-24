@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
+import firebase from 'firebase'
 import { connect } from 'react-redux'
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
-import { showCreateReport, inputUpdate, fetchReports } from '../actions'
+import { showCreateReport, inputUpdate, fetchReportsSuccess } from '../actions'
 
 
 const position = [44.2706, -71.3033]
@@ -15,7 +16,9 @@ class MyMap extends Component {
   constructor(props) {
     super(props)
     this.onMapClick = this.onMapClick.bind(this)
-    props.fetchReports()
+
+    firebase.database().ref('/reports')
+      .on('value', (snapshot) => { props.fetchReportsSuccess(snapshot.val()) })
   }
 
   onMapClick(event) {
@@ -52,9 +55,10 @@ class MyMap extends Component {
 
 MyMap.propTypes = {
   showCreateReport: PropTypes.func.isRequired,
-  inputUpdate: PropTypes.func.isRequired
+  inputUpdate: PropTypes.func.isRequired,
+  fetchReportsSuccess: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => (state.modal)
 
-export default connect(mapStateToProps, { showCreateReport, inputUpdate, fetchReports })(MyMap)
+export default connect(mapStateToProps, { showCreateReport, inputUpdate, fetchReportsSuccess })(MyMap)
