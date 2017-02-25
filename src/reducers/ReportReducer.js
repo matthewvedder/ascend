@@ -6,9 +6,10 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case FETCH_REPORTS_SUCCESS:
-      console.log(action.reports)
-      return { ...state, reports: action.reports }
+    case FETCH_REPORTS_SUCCESS: {
+      const { reports } = action
+      return { ...state, reports }
+    }
     default:
       return state
   }

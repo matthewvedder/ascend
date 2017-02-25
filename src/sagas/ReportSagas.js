@@ -1,7 +1,7 @@
 import firebase from 'firebase'
 import { takeLatest, select, put } from 'redux-saga/effects'
-import { CREATE_REPORT, FETCH_REPORTS, HIDE_MODAL } from '../actions/types'
-import { fetchReportsSuccess } from '../actions'
+import { CREATE_REPORT, HIDE_MODAL } from '../actions/types'
+// import { fetchReportsSuccess } from '../actions'
 
 function* createReport(action) {
   const state = yield select()
@@ -19,7 +19,7 @@ function* createReport(action) {
 // function* fetchReports() {
 //  yield firebase.database().ref('/reports')
 //    .on('value', (snapshot) => {
-//       console.log((reports))
+//      console.log((reports))
 //      fetchReportsSuccess()
 //    })
 // }
