@@ -40,11 +40,6 @@ class MyMap extends Component {
             url={`${url}{z}/{x}/{y}?access_token=${accessToken}`}
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
-          <Marker position={position}>
-            <Popup>
-              <span>A pretty CSS3 popup.<br />Easily customizable.</span>
-            </Popup>
-          </Marker>
         </Map>
       </div>
     )
