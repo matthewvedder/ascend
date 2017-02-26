@@ -3,6 +3,7 @@ import { Marker, Popup } from 'react-leaflet'
 import firebase from 'firebase'
 import { connect } from 'react-redux'
 import { fetchReportsSuccess } from '../actions'
+import Popper from './Popper'
 
 class Markers extends Component {
   constructor(props) {
@@ -15,10 +16,12 @@ class Markers extends Component {
   renderMarkers() {
     const reports = this.props.reports
     const markers = Object.keys(reports).map((key) => {
-      const { lat, lng } = reports[key]
+      const report = reports[key]
+      console.log(report)
+      const { lat, lng } = report
       return (
         <Marker key={key} position={[lat, lng]}>
-          <Popup><span>HIIIEEE!</span></Popup>
+          <Popper report={report} />
         </Marker>
       )
     })

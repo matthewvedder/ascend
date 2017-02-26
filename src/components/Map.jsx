@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import firebase from 'firebase'
 import { connect } from 'react-redux'
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
 import { showCreateReport, inputUpdate } from '../actions'
