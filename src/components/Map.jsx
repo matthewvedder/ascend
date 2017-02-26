@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import firebase from 'firebase'
 import { connect } from 'react-redux'
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
-import { showCreateReport, inputUpdate, fetchReportsSuccess } from '../actions'
+import { showCreateReport, inputUpdate } from '../actions'
+import Markers from './Markers'
 
 
 const position = [44.2706, -71.3033]
@@ -16,10 +17,6 @@ class MyMap extends Component {
   constructor(props) {
     super(props)
     this.onMapClick = this.onMapClick.bind(this)
-    this.renderReports = this.renderMarkers.bind(this)
-
-    firebase.database().ref('/reports')
-      .on('value', (snapshot) => { props.fetchReportsSuccess(snapshot.val()) })
   }
 
   onMapClick(event) {
@@ -31,15 +28,6 @@ class MyMap extends Component {
     inputUpdate('lng', latlng.lng)
   }
 
-  renderMarkers() {
-    const reports = this.props.reports.reports
-    const markers = Object.keys(reports).map((key) => {
-      const { lat, lng } = reports[key]
-      return <Marker key={key} position={[lat, lng]} />
-    })
-    return markers
-  }
-
   render() {
     // This needs to be hidden
     const accessToken = 'pk.eyJ1IjoidmVkZHN0ZXIiLCJhIjoiY2lyNzdlanUzMDBza2djbTM1Z2hlYTdnNSJ9.FpydM0KRrrunXzaHJYCmrA'
@@ -48,7 +36,7 @@ class MyMap extends Component {
     return (
       <div>
         <Map onClick={this.onMapClick} style={styles.mapStyle} center={position} zoom={11}>
-          { this.renderReports() }
+          <Markers />
           <TileLayer
             url={`${url}{z}/{x}/{y}?access_token=${accessToken}`}
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -66,15 +54,13 @@ class MyMap extends Component {
 
 MyMap.propTypes = {
   showCreateReport: PropTypes.func.isRequired,
-  inputUpdate: PropTypes.func.isRequired,
-  fetchReportsSuccess: PropTypes.func.isRequired,
-  reports: PropTypes.object.isRequired
+  inputUpdate: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const { modal, reports } = state
 
   return { modal, reports }
 }
 
-export default connect(mapStateToProps, { showCreateReport, inputUpdate, fetchReportsSuccess })(MyMap)
+export default connect(mapStateToProps, { showCreateReport, inputUpdate })(MyMap)
