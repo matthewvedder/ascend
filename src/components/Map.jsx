@@ -34,7 +34,7 @@ class MyMap extends Component {
 
     return (
       <div>
-        <Map onClick={this.onMapClick} style={styles.mapStyle} center={position} zoom={11}>
+        <Map onClick={this.onMapClick} style={styles.mapStyle} center={position} zoom={6}>
           <Markers />
           <TileLayer
             url={`${url}{z}/{x}/{y}?access_token=${accessToken}`}
