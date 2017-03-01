@@ -22,7 +22,7 @@ const styles = {
   }
 }
 
-const ReportForm = ({ title, lat, lng, description, onSubmit, inputUpdate }) => (
+const ReportForm = ({ title, lat, lng, description, route, area, region, onSubmit, inputUpdate }) => (
   <div style={styles.container}>
     <Input
       type="text"
@@ -31,6 +31,30 @@ const ReportForm = ({ title, lat, lng, description, onSubmit, inputUpdate }) => 
       placeholder="Title"
       value={title}
       onChange={event => inputUpdate('title', event.target.value)}
+    />
+    <Input
+      type="text"
+      id="lat"
+      label="Route"
+      placeholder="Flying Buttress"
+      value={route}
+      onChange={event => inputUpdate('area', event.target.value)}
+    />
+    <Input
+      type="text"
+      id="lat"
+      label="Area"
+      placeholder="The Beer Walls"
+      value={area}
+      onChange={event => inputUpdate('area', event.target.value)}
+    />
+    <Input
+      type="text"
+      id="lat"
+      label="Region"
+      placeholder="Adirondacks"
+      value={area}
+      onChange={event => inputUpdate('area', event.target.value)}
     />
     <Input
       type="text"
@@ -72,9 +96,9 @@ ReportForm.propTypes = {
 }
 
 const mapStateToProps = (state) => {
-  const { title, lat, lng, description } = state.input
+  const { title, lat, lng, description, route, area, region } = state.input
 
-  return { title, lat, lng, description }
+  return { title, lat, lng, description, route, area, region }
 }
 
 export default connect(mapStateToProps, { inputUpdate })(ReportForm)

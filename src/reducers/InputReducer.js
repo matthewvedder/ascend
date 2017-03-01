@@ -3,6 +3,9 @@ import { INPUT_UPDATE } from '../actions/types'
 const INITIAL_STATE = {
   clickedLatlng: '',
   title: '',
+  route: '',
+  input: '',
+  region: '',
   lat: 0,
   lng: 0,
   description: ''
