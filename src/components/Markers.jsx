@@ -17,7 +17,6 @@ class Markers extends Component {
     const reports = this.props.reports
     const markers = Object.keys(reports).map((key) => {
       const report = reports[key]
-      console.log(report)
       const { lat, lng } = report
       return (
         <Marker key={key} position={[lat, lng]}>
