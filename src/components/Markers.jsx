@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { Marker, Popup } from 'react-leaflet'
+import { Marker } from 'react-leaflet'
 import firebase from 'firebase'
 import { connect } from 'react-redux'
 import { fetchReportsSuccess } from '../actions'
