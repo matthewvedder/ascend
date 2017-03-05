@@ -4,8 +4,9 @@ import { STORE_IMAGE } from '../actions/types'
 
 function* storeImage(action) {
   const { reportKey, image } = action
+  const storageRef = firebase.storage().ref()
   const imageRef = storageRef.child(`images/${reportKey}/${image[0].name}`)
-  imageRef.put(image[0]).then((snapshot) => {
+  yield imageRef.put(image[0]).then((snapshot) => {
   })
 }
 
