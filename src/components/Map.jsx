@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
+import { Map, TileLayer } from 'react-leaflet'
 import { showCreateReport, inputUpdate } from '../actions'
 import Markers from './Markers'
 
