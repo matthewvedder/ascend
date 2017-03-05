@@ -11,7 +11,6 @@ const styles = {
 }
 
 const Popper = ({ report }) => {
-  console.log(report.title)
   const { containerStyle, textStyle } = styles
   return (
     <Popup style={containerStyle}>
