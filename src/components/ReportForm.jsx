@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
+import ImageUploader from './ImageUploader'
 import Input from './common/Input'
 import Button from './common/Button'
 import { inputUpdate } from '../actions'
@@ -22,7 +23,19 @@ const styles = {
   }
 }
 
-const ReportForm = ({ title, lat, lng, description, route, area, region, onSubmit, inputUpdate }) => (
+const ReportForm = ({
+  title,
+  image,
+  lat,
+  lng,
+  description,
+  route,
+  area,
+  region,
+  onSubmit,
+  inputUpdate
+}) => (
+
   <div style={styles.container}>
     <Input
       type="text"
@@ -32,17 +45,18 @@ const ReportForm = ({ title, lat, lng, description, route, area, region, onSubmi
       value={title}
       onChange={event => inputUpdate('title', event.target.value)}
     />
+    <ImageUploader />
     <Input
       type="text"
-      id="lat"
+      id="route"
       label="Route"
       placeholder="Flying Buttress"
       value={route}
-      onChange={event => inputUpdate('area', event.target.value)}
+      onChange={event => inputUpdate('route', event.target.value)}
     />
     <Input
       type="text"
-      id="lat"
+      id="area"
       label="Area"
       placeholder="The Beer Walls"
       value={area}
@@ -50,11 +64,11 @@ const ReportForm = ({ title, lat, lng, description, route, area, region, onSubmi
     />
     <Input
       type="text"
-      id="lat"
+      id="region"
       label="Region"
       placeholder="Adirondacks"
       value={area}
-      onChange={event => inputUpdate('area', event.target.value)}
+      onChange={event => inputUpdate('region', event.target.value)}
     />
     <Input
       type="text"
@@ -79,7 +93,7 @@ const ReportForm = ({ title, lat, lng, description, route, area, region, onSubmi
       onChange={event => inputUpdate('description', event.target.value)}
     />
     <Button
-      onClick={() => onSubmit({ title, lat, lng, description })}
+      onClick={() => onSubmit({ values: { title, lat, lng, description }, image })}
     >
       Create
     </Button>
@@ -88,6 +102,7 @@ const ReportForm = ({ title, lat, lng, description, route, area, region, onSubmi
 
 ReportForm.propTypes = {
   title: PropTypes.string.isRequired,
+  image: PropTypes.array.isRequired,
   lat: PropTypes.number.isRequired,
   lng: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
@@ -96,9 +111,10 @@ ReportForm.propTypes = {
 }
 
 const mapStateToProps = (state) => {
-  const { title, lat, lng, description, route, area, region } = state.input
+  const { title, image, lat, lng, description, route, area, region } = state.input
+  console.log(image)
 
-  return { title, lat, lng, description, route, area, region }
+  return { title, image, lat, lng, description, route, area, region }
 }
 
 export default connect(mapStateToProps, { inputUpdate })(ReportForm)

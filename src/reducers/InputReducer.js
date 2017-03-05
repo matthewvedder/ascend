@@ -3,6 +3,7 @@ import { INPUT_UPDATE } from '../actions/types'
 const INITIAL_STATE = {
   clickedLatlng: '',
   title: '',
+  image: [],
   route: '',
   input: '',
   region: '',

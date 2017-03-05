@@ -1,18 +1,19 @@
 import firebase from 'firebase'
 import { takeLatest, select, put } from 'redux-saga/effects'
-import { CREATE_REPORT, HIDE_MODAL } from '../actions/types'
+import { CREATE_REPORT, HIDE_MODAL, STORE_IMAGE } from '../actions/types'
 // import { fetchReportsSuccess } from '../actions'
 
 function* createReport(action) {
+  const { image, values } = action
   const state = yield select()
   const userID = state.auth.user.uid
   const reportKey = firebase.database().ref().child('reports').push().key
-
   const updates = {}
-  updates[`/reports/${reportKey}`] = action.values
+  updates[`/reports/${reportKey}`] = values
   updates[`users/${userID}/reports/${reportKey}`] = true
 
   yield firebase.database().ref().update(updates)
+  yield put({ type: STORE_IMAGE, image, reportKey })
   yield put({ type: HIDE_MODAL })
 }
 
