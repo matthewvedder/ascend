@@ -13,7 +13,7 @@ function* createReport(action) {
   updates[`users/${userID}/reports/${reportKey}`] = true
 
   yield firebase.database().ref().update(updates)
-  yield put({ type: STORE_IMAGE, image, reportKey })
+  if (image[0]) { yield put({ type: STORE_IMAGE, image, reportKey }) }
   yield put({ type: HIDE_MODAL })
 }
 
