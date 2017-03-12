@@ -20,8 +20,7 @@ const styles = {
     background: '#fff',
     overflow: 'auto',
     WebkitOverflowScrolling: 'touch',
-    outline: 'none',
-    padding: '20px'
+    outline: 'none'
   },
   title: {
     color: '#33334d',
@@ -29,14 +28,14 @@ const styles = {
   },
   close: {
     position: 'absolute',
-    top: '7px',
-    right: '12px',
+    top: '9px',
+    right: '20px',
     fontSize: '1.5em',
     color: 'gainsboro'
   }
 }
 
-const ModalWrapper = ({ title, children, hideModal }) => {
+const ModalWrapper = ({ children, hideModal }) => {
   const handleBackgroundClick = (event) => {
     if (event.target === event.currentTarget) hideModal()
   }
@@ -44,7 +43,6 @@ const ModalWrapper = ({ title, children, hideModal }) => {
   return (
     <div onClick={handleBackgroundClick} style={styles.overlay}>
       <div style={styles.content}>
-        <h2 style={styles.title}>{title}</h2>
         <span style={styles.close} onClick={hideModal}>x</span>
         { children }
       </div>

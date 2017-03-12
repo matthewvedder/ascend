@@ -3,6 +3,14 @@ import Dropzone from 'react-dropzone'
 import { connect } from 'react-redux'
 import { inputUpdate } from '../actions'
 
+const styles = {
+  borderColor: '#33334d',
+  borderStyle: 'dashed',
+  padding: '1em',
+  flexGrow: 1,
+  height: '15em'
+}
+
 class ImageUploader extends Component {
   constructor(props) {
     super(props)
@@ -15,11 +23,9 @@ class ImageUploader extends Component {
 
   render() {
     return (
-      <div>
-        <Dropzone onDrop={this.onDrop}>
-          <div>Try dropping some files here, or click to select files to upload.</div>
-        </Dropzone>
-      </div>
+      <Dropzone style={styles} onDrop={this.onDrop}>
+        <div>Upload a photo!</div>
+      </Dropzone>
     )
   }
 }

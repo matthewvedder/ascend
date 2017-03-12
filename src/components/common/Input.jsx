@@ -1,15 +1,22 @@
 import React, { PropTypes } from 'react'
+import Radium from 'radium'
 
 const styles = {
   containerStyle: {
     display: 'flex',
     flexDirection: 'column',
-    paddingTop: '5%'
+    paddingBottom: '3%',
+    marginLeft: '4em',
+    marginRight: '4em'
   },
   labelStyle: {
-    alignSelf: 'flex-start',
+  },
+  inputStyle: {
+    padding: '.3em',
     fontFamily: 'Arial, Helvetica, sans-serif',
-    fontSize: '1em'
+    fontSize: '1em',
+    outline: 'none',
+    color: 'black',
   }
 }
 
@@ -46,4 +53,4 @@ Input.propTypes = {
   onChange: PropTypes.func.isRequired
 }
 
-export default Input
+export default Radium(Input)
