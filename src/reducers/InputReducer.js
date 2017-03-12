@@ -1,4 +1,4 @@
-import { INPUT_UPDATE } from '../actions/types'
+import { INPUT_UPDATE, HIDE_MODAL } from '../actions/types'
 
 const INITIAL_STATE = {
   clickedLatlng: '',
@@ -9,7 +9,8 @@ const INITIAL_STATE = {
   region: '',
   lat: 0,
   lng: 0,
-  description: ''
+  description: '',
+  activity: null
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -17,6 +18,9 @@ export default (state = INITIAL_STATE, action) => {
     case INPUT_UPDATE:
       // action.payload === { prop: 'name', value: 'jane' }
       return { ...state, [action.payload.prop]: action.payload.value }
+    case HIDE_MODAL: {
+      return INITIAL_STATE
+    }
     default:
       return state
   }
