@@ -59,13 +59,6 @@ const ReportForm = ({
       />
       <Input
         type="text"
-        id="activity"
-        label="Activity"
-        value={activity}
-        onChange={event => inputUpdate('activity', event.target.value)}
-      />
-      <Input
-        type="text"
         id="route"
         label="Route"
         placeholder="Flying Buttress"
@@ -85,13 +78,11 @@ const ReportForm = ({
         id="region"
         label="Region"
         placeholder="Adirondacks"
-        value={area}
+        value={region}
         onChange={event => inputUpdate('region', event.target.value)}
       />
     </div>
   </div>
-
-  <label style={styles.labelStyle} htmlFor="description">Write your report here!</label>
   <textarea
     id="description"
     style={styles.descriptionStyle}
@@ -119,7 +110,6 @@ ReportForm.propTypes = {
 
 const mapStateToProps = (state) => {
   const { title, image, activity, lat, lng, description, route, area, region } = state.input
-  console.log(image)
 
   return { title, image, activity, lat, lng, description, route, area, region }
 }
