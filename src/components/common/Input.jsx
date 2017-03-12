@@ -5,14 +5,14 @@ const styles = {
   containerStyle: {
     display: 'flex',
     flexDirection: 'column',
-    paddingBottom: '3%',
+    paddingBottom: '.7em',
     marginLeft: '4em',
     marginRight: '4em'
   },
   labelStyle: {
   },
   inputStyle: {
-    padding: '.3em',
+    padding: '.4em',
     fontFamily: 'Arial, Helvetica, sans-serif',
     fontSize: '1em',
     outline: 'none',
